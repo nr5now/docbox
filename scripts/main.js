@@ -1,7 +1,6 @@
 require.config({
     paths: {
-        jquery: 'vendor/jquery.min'
-,
+        jquery: 'vendor/jquery.min',
         bootstrap: 'vendor/bootstrap/bootstrap',
         text: 'vendor/text'
     },
