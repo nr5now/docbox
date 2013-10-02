@@ -1,6 +1,6 @@
 require.config({
     paths: {
-        jquery: '../bower_components/jquery/jquery'
+        jquery: 'vendor/jquery.min'
 ,
         bootstrap: 'vendor/bootstrap/bootstrap',
         text: 'vendor/text'
