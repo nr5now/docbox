@@ -1,0 +1,54 @@
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <h2 class="">DocBox</h2>
+    <p>Easy access to your boxed documents</p>
+    <p><span id="status"></span></p>
+</div>
+
+<nav class="navbar navbar-default" role="navigation">
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/box/add">
+                <span class="glyphicon glyphicon-plus"></span> Add Box</a>
+            </li>
+        </ul>
+        <form class="navbar-form navbar-right" role="search">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">Search</button>
+        </form>
+    </div>
+</nav>
+
+<div ng-show="list.length <= 0" class="jumbotron">
+    <h2 class="alert-warning">No records found</h2>
+</div>
+
+
+<div class="row">
+
+    <table ng-show="list.length > 0" class="table table-bordered table-striped box-table">
+        <thead>
+        <tr>
+            <th>Description</th>
+            <th>Doc#</th>
+            <th>Created</th>
+            <th>Location</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="(id, box) in list">
+            <td>
+                <a href="#/box/{{box.$id}}">
+                    {{box.desc}}
+                </a>
+            </td>
+            <td id="box-{{id}}" ng-show="showBox(box, id)">{{box.docs.length}}</td>
+            <td>{{box.created}}</td>
+            <td>{{box.location | lookup:'loc'}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>

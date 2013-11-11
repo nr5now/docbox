@@ -1,0 +1,70 @@
+<h3>Box | Document </h3>
+<form name="frmDoc" class="form-horizontal well" role="form">
+    <div class="form-group">
+        <label class="col-md-2 col-lg-2 control-label" for="doc-doctype">Document type</label>
+        <div class="col-md-3 col-lg-2">
+
+            <select class="form-control" id="doc-doctype" name="doc-doctype" ng-model="docUpdate.doctype" ng-options="id as dt.desc for (id, dt) in utilTypes.doctypes" required="">
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 col-lg-2 control-label" for="doc-desc">Description</label>
+        <div class="col-md-6 col-lg-6 controls">
+            <textarea class="form-control input-xlarge" id="doc-desc" name="doc-desc" rows="3" ng-model="docUpdate.desc" placeholder="Description" required="">{{doc.desc}}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 col-lg-2 control-label">Created {{doc.created|date:shortDate}}</label>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 col-lg-2 control-label" for="doc-location">Location</label>
+        <div class="col-md-3 col-lg-2">
+            <select class="form-control" id="doc-location" name="doc-location" ng-model="docUpdate.location" ng-options="id as loc.desc for (id, loc) in utilTypes.locations" required="">
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 col-lg-2 control-label" for="doc-dept">Dept</label>
+        <div class="col-md-3 col-lg-2">
+            <select class="form-control" id="doc-dept" name="doc-dept" ng-model="docUpdate.dept" ng-options="id as dept.desc for (id, dept) in utilTypes.departments" required="">
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2 col-lg-2 control-label" for="doc-checkoutby">Checked out by</label>
+        <div class="col-md-3 col-lg-2">
+            <select class="form-control" id="doc-checkoutby" name="doc-checkoutby" ng-model="docUpdate.checkoutby" value="{{doc.checkoutby}}" ng-options="id as emp.name for (id, emp) in utilTypes.employees">
+                <option value="">Select ...</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2 col-lg-2 control-label" for="doc-checkout">Checkout</label>
+        <div class="col-md-3 col-lg-3">
+            <input type="date" class="form-control" id="doc-checkout" name="doc-checkout" placeholder="Checkout" ng-model="docUpdate.checkout" value="{{doc.checkout|date:shortDate}}">
+        </div>
+        <label class="col-md-2 col-lg-2 control-label" for="doc-checkin">Checkin</label>
+        <div class="col-md-3 col-lg-3">
+            <input type="date" class="form-control" id="doc-checkin" name="doc-checkin" placeholder="Check in" ng-model="docUpdate.checkin" value="{{doc.checkin|date:shortDate}}">
+        </div>
+    </div>
+
+    <div class="form-group alert-danger">
+        <label class="col-md-2 col-lg-2 control-label" for="doc-destroyed">Destroyed</label>
+        <div class="col-md-3 col-lg-3">
+            <input type="date" class="form-control" id="doc-destroyed" name="doc-destroyed" placeholder="Destroyed" ng-model="docUpdate.destroyed" value="{{doc.destroyed|date:shortDate}}">
+        </div>
+    </div>
+
+    <hr>
+    <div class="form-actions">
+        <a href="#/box/{{boxid}}">
+            <button ng-click="update()" ng-disabled="frmDoc.$invalid" type="submit" class="btn btn-primary">Save changes</button>
+        </a>
+        <a href="#/box/{{boxid}}">
+            <button type="reset" class="btn">Cancel</button>
+        </a>
+    </div>
+</form>
